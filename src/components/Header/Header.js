@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-light  ">
@@ -24,8 +24,12 @@ const Header = () => {
         >
           <ul className="navbar-nav ">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="#">
-                Demo videos
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to="/myprofile"
+              >
+                Myprofile
               </Link>
             </li>
             <li className="nav-item">

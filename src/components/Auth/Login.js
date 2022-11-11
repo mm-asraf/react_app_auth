@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Header from '../Header/Header';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Header from "../Header/Header";
 
-const Login = () => {
-  const [identifier, setIdentifier] = useState('');
-  const [password, setPassword] = useState('');
-  const [token, setToken] = useState('');
+const Login = ({ onSaveToken }) => {
+  const [identifier, setIdentifier] = useState("");
+  const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
 
   const handleIdentifier = (e) => {
     setIdentifier(e.target.value);
@@ -15,44 +15,34 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleLogin = async ({ identifier, password }) => {
+  const handleLogin = async (identifier, password) => {
     try {
-      let respon = await fetch('https://uatservice.fodxpert.com/auth/local/', {
-        method: 'POST',
-        body: JSON.stringify(identifier, password),
+      let respon = await fetch("https://uatservice.fodxpert.com/auth/local/", {
+        method: "POST",
+        body: JSON.stringify({ identifier, password }),
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
 
       let data = await respon.json();
       setToken(data.jwt);
+
       console.log(data);
-      //   if (respon.jwt) {
-      //     localStorage.setItem('int', respon.jwt);
-      //   }
+      console.log(token);
+
+      if (data.jwt) {
+        localStorage.setItem("int", data.jwt);
+      }
     } catch (err) {
       console.log(err);
     }
   };
 
-  //   useEffect(() => {
-  //     let token = localStorage.getItem('int');
-  //     if (token) {
-  //       console.log(token);
-  //     }
-  //   }, []);
-
-  console.log(token.jwt);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin();
-    const data = {
-      identifier: identifier,
-      password: password,
-    };
-    console.log(data);
+
+    handleLogin(identifier, password);
   };
 
   return (
@@ -63,7 +53,7 @@ const Login = () => {
           <div className="container h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div className="card" style={{ borderRadius: '15px' }}>
+                <div className="card" style={{ borderRadius: "15px" }}>
                   <div className="card-body p-5">
                     <h2 className="text-uppercase text-center mb-2">LogIn</h2>
 
@@ -104,7 +94,7 @@ const Login = () => {
                       </div>
 
                       <p className="text-center text-muted mt-2 mb-0">
-                        Don't have an account?{' '}
+                        Don't have an account?{" "}
                         <Link to="/signup" className="fw-bold text-body">
                           <u>Signup here</u>
                         </Link>
