@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import Header from '../Header/Header';
-import Card from '../UI/Card';
-import '../css/Signup.css';
-import { Link } from 'react-router-dom';
-import Home from '../Dashboard/Home';
+import React, { useState } from "react";
+import Header from "../Header/Header";
+import Card from "../UI/Card";
+import "../css/Signup.css";
+import { Link } from "react-router-dom";
+import Home from "../Dashboard/Home";
 
 const dataPackage = [
   {
-    name: 'corporate',
+    name: "corporate",
   },
   {
-    name: 'personal',
+    name: "personal",
   },
 ];
 
 const Signup = () => {
-  const [name, setName] = useState('');
-  const [compName, setCompName] = useState('');
-  const [email, setEmail] = useState('');
-  const [contact, setContact] = useState('');
-  const [password, setPassword] = useState('');
-  const [filerPartyPack, setFilterPartyPack] = useState('personal');
-  const [filterState, setFilterState] = useState('tamil nadu');
-  const [filterCountry, setFilterCountry] = useState('India');
+  const [name, setName] = useState("");
+  const [compName, setCompName] = useState("");
+  const [email, setEmail] = useState("");
+  const [contact, setContact] = useState("");
+  const [password, setPassword] = useState("");
+  const [filerPartyPack, setFilterPartyPack] = useState("personal");
+  const [filterState, setFilterState] = useState("tamil nadu");
+  const [filterCountry, setFilterCountry] = useState("India");
 
   const handleName = (e) => {
     setName(e.target.values);
@@ -66,7 +66,7 @@ const Signup = () => {
           <div className="container h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div className="card" style={{ 'border-radius': '15px' }}>
+                <div className="card" style={{ "border-radius": "15px" }}>
                   <div className="card-body p-5">
                     <h2 className="text-uppercase text-center mb-2">
                       Create an account
@@ -139,7 +139,7 @@ const Signup = () => {
                         <select
                           className="select form-control-sm "
                           id="form3Example4cg"
-                          style={{ width: '100%' }}
+                          style={{ width: "100%" }}
                         >
                           <option value="1">Personal</option>
                           <option value="2">Corporate</option>
@@ -154,7 +154,7 @@ const Signup = () => {
                         <select
                           className="select form-control-sm "
                           id="form3Example4cg"
-                          style={{ width: '100%' }}
+                          style={{ width: "100%" }}
                         >
                           <option value="1">India</option>
                           <option value="2">U.S</option>
@@ -169,7 +169,7 @@ const Signup = () => {
                         <select
                           className="select form-control-sm "
                           id="form3Example4cg"
-                          style={{ width: '100%' }}
+                          style={{ width: "100%" }}
                         >
                           <option value="1">West Bengal</option>
                           <option value="2">Karnataka</option>
@@ -187,7 +187,7 @@ const Signup = () => {
                           className="form-check-label"
                           for="form2Example3g"
                         >
-                          I agree all statements in{' '}
+                          I agree all statements in{" "}
                           <a href="#!" className="text-body">
                             <u>Terms of service</u>
                           </a>
@@ -204,7 +204,7 @@ const Signup = () => {
                       </div>
 
                       <p className="text-center text-muted mt-2 mb-0">
-                        already Have an account?{' '}
+                        already Have an account?{" "}
                         <Link to="/login" className="fw-bold text-body">
                           <u>Login here</u>
                         </Link>

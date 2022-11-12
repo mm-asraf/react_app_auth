@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ onSaveToken }) => {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
-
+  const navigate = useNavigate();
   const handleIdentifier = (e) => {
     setIdentifier(e.target.value);
   };
@@ -34,6 +35,11 @@ const Login = ({ onSaveToken }) => {
       if (data.jwt) {
         localStorage.setItem("int", data.jwt);
       }
+
+      const tok = localStorage.getItem("int");
+      if (tok) {
+        navigate("/myprofile");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -41,7 +47,8 @@ const Login = ({ onSaveToken }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setIdentifier("");
+    setPassword("");
     handleLogin(identifier, password);
   };
 

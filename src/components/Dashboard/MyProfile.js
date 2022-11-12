@@ -3,7 +3,7 @@ import Login from "../Auth/Login";
 import Header from "../Header/Header";
 
 const MyProfile = () => {
-  const [myprofileData, setMyProfileData] = useState("");
+  const [myprofileData, setMyProfileData] = useState([]);
   let token = localStorage.getItem("int");
 
   const getProfile = async (token) => {
@@ -12,7 +12,7 @@ const MyProfile = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // notice the Bearer before your token
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -24,17 +24,22 @@ const MyProfile = () => {
     }
   };
 
-  const handleGetData = () => {
+  // const handleGetData = () => {
+  //   getProfile(token);
+  // };
+
+  useEffect(() => {
     getProfile(token);
-  };
+  }, []);
+
+  console.log(myprofileData);
 
   return (
     <div>
       <Header />
       <h1>My Headers</h1>
-      <button type="button" onClick={handleGetData}>
-        get data
-      </button>
+
+      <div className="contain">{myprofileData.name}</div>
     </div>
   );
 };
